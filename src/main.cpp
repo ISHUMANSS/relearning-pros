@@ -15,12 +15,12 @@
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 // motor groups
-pros::MotorGroup leftMotors({-5, 4, -3},
+pros::MotorGroup leftMotors({-9, 8, -10, 7},
                             pros::MotorGearset::blue); // left motor group - ports 3 (reversed), 4, 5 (reversed)
-pros::MotorGroup rightMotors({6, -9, 7}, pros::MotorGearset::blue); // right motor group - ports 6, 7, 9 (reversed)
+pros::MotorGroup rightMotors({3, -4, 2,-1}, pros::MotorGearset::blue); // right motor group - ports 6, 7, 9 (reversed)
 
 // Inertial Sensor on port 10
-pros::Imu imu(10);
+pros::Imu imu(11);
 
 
 
@@ -229,12 +229,12 @@ void autonomous() {
     //time out how long the robot has to be able to try to move there in millseconds,
     //extra prams {} like move backwards in this example use . to find what they are
     //if it should do this all async go to next point or wait so like if it reachs early flalse means it will always wait the time true means it will go as soon as it reaches the point
-    chassis.moveToPoint(10, 7, 1000,{.forwards = false, .maxSpeed = 80},false );
+    //chassis.moveToPoint(10, 7, 1000,{.forwards = false, .maxSpeed = 80},false );
 
     //moveToPose
     //like moveToPoint but also takes a headding theata
     //this is the angle the robot will end up in after it has reached is destination
-    chassis.moveToPose(10, 7, 60, 1000);
+    //chassis.moveToPose(10, 7, 60, 1000);
 
     //turning based commands
 
@@ -243,7 +243,7 @@ void autonomous() {
     //robot will turn to the target heading on the spot
     //the timeout
     //extra prams
-    chassis.turnToHeading(60, 1000);
+    //chassis.turnToHeading(60, 1000);
 
     //swingToHeading
     //like turn to heading but rather then doing it in place it will do it by only turning one side of the drive
@@ -251,7 +251,7 @@ void autonomous() {
     //takes in a lemlib drive side for the locked side not allowed to move the left side
     //time out
     //extra prams
-    chassis.swingToHeading(60, lemlib::DriveSide::LEFT, 1000);
+    chassis.swingToHeading(90, lemlib::DriveSide::LEFT, 1500, {.maxSpeed = 40});
 
 
 
@@ -273,7 +273,7 @@ void autonomous() {
     //how far ahead the robot will look ahead to compute the path in inches
     //time out how long is it allowed to run
     //all the extra prams same as the others
-    chassis.follow(pathlearning_jerryio_txt, 10, 1000);
+    //chassis.follow(pathlearning_jerryio_txt, 10, 1000);
 
 }
 
