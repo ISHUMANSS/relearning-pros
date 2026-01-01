@@ -243,7 +243,7 @@ void autonomous() {
     //robot will turn to the target heading on the spot
     //the timeout
     //extra prams
-    //chassis.turnToHeading(60, 1000);
+    chassis.turnToHeading(90, 10000, {.maxSpeed = 30});
 
     //swingToHeading
     //like turn to heading but rather then doing it in place it will do it by only turning one side of the drive
@@ -251,7 +251,7 @@ void autonomous() {
     //takes in a lemlib drive side for the locked side not allowed to move the left side
     //time out
     //extra prams
-    chassis.swingToHeading(90, lemlib::DriveSide::LEFT, 1500, {.maxSpeed = 40});
+    //chassis.swingToHeading(90, lemlib::DriveSide::LEFT, 1500, {.maxSpeed = 40});
 
 
 
